@@ -1,13 +1,6 @@
+import logo from '../../images/logo.png';
 import { useState, useEffect, useRef } from 'react';
-import {
-  ChevronRight,
-  Code2,
-  Search,
-  Terminal,
-  Check,
-  ChevronDown,
-  GraduationCap,
-} from 'lucide-react';
+import { ChevronRight, Code2, Search, Check, ChevronDown, GraduationCap } from 'lucide-react';
 import { tasks, categories } from '../data/tasks';
 import { useStore } from '../store/useStore';
 export function Header({
@@ -24,13 +17,7 @@ export function Header({
     <>
       <header>
         <a className="brand" href="#/dashboard">
-          <span className="brand-icon">
-            <Terminal size={23} />
-          </span>
-          <span>
-            SQL<span className="brand-light"> Trainer</span>
-            <small>Практика сегодня — карьера завтра</small>
-          </span>
+          <img className="brand-logo" src={logo} alt="SQL Trainer — учись, расти, повторяй" />
         </a>
         <nav>
           {[

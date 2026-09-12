@@ -1,13 +1,13 @@
 :root {
   font-family: Manrope, Inter, system-ui, sans-serif;
-  color: #e8e2e9;
-  background: #100d12;
+  color: #f4f5f7;
+  background: #0b0b0f;
   font-synthesis: none;
   font-size: 13px;
-  --muted: #89808e;
-  --red: #f44e72;
-  --line: #30232f;
-  --panel: #19151ce8;
+  --muted: #9ca3af;
+  --red: #ff2d3a;
+  --line: #2a1f26;
+  --panel: #141018ed;
 }
 * {
   box-sizing: border-box;
@@ -83,7 +83,7 @@ header {
   padding: 0 26px;
   gap: 30px;
   border-bottom: 1px solid var(--line);
-  background: #171219;
+  background: #100d10;
   position: relative;
   z-index: 5;
 }
@@ -111,7 +111,7 @@ header {
   height: 39px;
   width: 39px;
   border-radius: 11px;
-  background: linear-gradient(135deg, #ed486c, #7b253f);
+  background: linear-gradient(135deg, #ff2d3a, #b21730);
   display: grid;
   place-items: center;
   box-shadow: 0 0 24px #eb31532a;
@@ -229,7 +229,7 @@ nav a.active {
   flex-shrink: 0;
   padding: 24px 14px 18px;
   border-right: 1px solid var(--line);
-  background: #141016;
+  background: #100c10dd;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 86px);
@@ -399,7 +399,7 @@ main {
   font-size: 8px;
   letter-spacing: 2.1px;
   font-weight: 700;
-  color: #c57c94;
+  color: #ff6575;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -420,11 +420,11 @@ main {
   z-index: 1;
 }
 .hero h1 span {
-  color: #ef829e;
+  color: #ff4d64;
 }
 .hero p {
   font-size: 10px;
-  color: #b097aa;
+  color: #b7b6c0;
   margin: 0;
   position: relative;
   z-index: 1;
@@ -762,7 +762,7 @@ pre {
   justify-content: space-between;
   border-top: 1px solid #302331;
   border-bottom: 1px solid #302331;
-  background: #171219;
+  background: #100d10;
   padding: 9px 18px;
   font:
     9px Consolas,
@@ -798,7 +798,7 @@ pre {
   font-weight: 600;
 }
 .primary {
-  background: linear-gradient(110deg, #e94b72, #c73660);
+  background: linear-gradient(110deg, #ff2d3a, #d51c35);
   border: 1px solid #f3678755;
   color: #fff1f5;
   box-shadow: 0 3px 17px #ee31542c;
@@ -1206,9 +1206,9 @@ tbody tr:hover {
   margin-bottom: 24px;
 }
 select {
-  background: #241a27;
+  background: #141018;
   color: #cbb2c6;
-  border: 1px solid #543449;
+  border: 1px solid #43232b;
   padding: 10px 13px;
   border-radius: 7px;
   font-size: 11px;
@@ -1339,10 +1339,10 @@ select {
   font:
     18px Consolas,
     monospace;
-  color: #e5a6c2;
+  color: #ff7383;
 }
 .reference-card p {
-  color: #baa1b4;
+  color: #bbc0c9;
   font-size: 12px;
 }
 .database-view {
@@ -1626,15 +1626,15 @@ select {
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  border: 1px solid #543449;
+  border: 1px solid #43232b;
   border-radius: 7px;
-  background: #241a27;
-  color: #a27b96;
+  background: #141018;
+  color: #a5a0ab;
 }
 .catalog-search input {
   background: transparent;
   border: 0;
-  color: #e1c9dc;
+  color: #f4f5f7;
   outline: none;
   min-width: 0;
   width: 180px;
@@ -1650,46 +1650,38 @@ select {
 .ambient-background {
   position: fixed;
   inset: 0;
-  overflow: hidden;
   z-index: -1;
   pointer-events: none;
-  background: #130e19;
+  background:
+    linear-gradient(#08080f30, #08080f65),
+    url('../images/background.png') center top / cover no-repeat;
 }
 .ambient-background::before {
   content: '';
   position: absolute;
-  inset: -25%;
-  background:
-    radial-gradient(ellipse at 75% 25%, #a4356959, transparent 42%),
-    radial-gradient(ellipse at 20% 60%, #6944ad55, transparent 45%),
-    conic-gradient(from 45deg at 65% 55%, #201326, #56213c66, #182e4266, #201326);
-  animation: ambient-drift 22s ease-in-out infinite alternate;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, #ff2d3a18, transparent 60%);
+  animation: ambient-drift 9s ease-in-out infinite alternate;
 }
 @keyframes ambient-drift {
   to {
-    transform: translate3d(5%, -4%, 0) rotate(12deg) scale(1.08);
+    opacity: 0.25;
   }
 }
 .hero {
-  min-height: 180px;
-  background: linear-gradient(105deg, #241723f5 30%, #69335788 72%, #36375b99);
+  min-height: 200px;
+  background:
+    linear-gradient(90deg, #100b10f5 10%, #100b10dd 48%, #100b1030),
+    url('../images/background.png') 30% 18% / cover;
+  border-color: #82232f80;
 }
 .hero::after {
-  content: '';
-  position: absolute;
-  width: 240px;
-  height: 390px;
-  right: 20px;
-  top: 4px;
-  background: url('./assets/wikipe-tan.png') center top / contain no-repeat;
-  filter: sepia(0.24) saturate(0.75) hue-rotate(295deg) drop-shadow(0 0 22px #eb80b355);
-  pointer-events: none;
-  opacity: 0.9;
+  content: none;
 }
 .hero > div:first-child {
   position: relative;
   z-index: 1;
-  max-width: calc(100% - 205px);
+  max-width: 78%;
 }
 .hero-art,
 .dashboard-symbol {
@@ -1724,7 +1716,7 @@ select {
 progress {
   width: 100%;
   height: 7px;
-  accent-color: #ef829e;
+  accent-color: #ff4d64;
 }
 .art-credit {
   padding: 26px 0 16px;
@@ -1789,5 +1781,107 @@ progress {
 @media (prefers-reduced-motion: reduce) {
   .ambient-background::before {
     animation: none;
+  }
+}
+
+/* Black surfaces and controlled red accents from the supplied style sheet. */
+.brand {
+  min-width: 230px;
+  overflow: hidden;
+}
+.brand-logo {
+  display: block;
+  width: 230px;
+  height: 66px;
+  object-fit: cover;
+}
+header {
+  background: #0b0b0ff2;
+  border-bottom-color: #82232f66;
+}
+main {
+  background: transparent;
+}
+.panel {
+  background: #100d12ed;
+  border-color: #422029;
+  box-shadow: 0 8px 24px #0003;
+}
+.sidebar {
+  backdrop-filter: blur(12px);
+}
+.hero h1 span,
+.reference-card h2 {
+  color: #ff4d64;
+}
+.hero p,
+.statement-text,
+.reference-card p {
+  color: #c3c2cc;
+}
+.primary {
+  background: #ff2d3a;
+  color: #fff;
+  box-shadow: 0 0 18px #ff2d3a26;
+}
+.primary:hover {
+  background: #ff4d64;
+  box-shadow: 0 0 24px #ff2d3a44;
+}
+.secondary {
+  background: #130e13;
+  border-color: #82232f;
+}
+.tree-task.current {
+  background: linear-gradient(90deg, #82232f66, #1a111755);
+  border-color: #ff2d3a66;
+}
+.topic-tag {
+  color: #ff6977;
+  background: #ff2d3a12;
+  border-color: #82232f77;
+}
+.avatar {
+  background: #82232f44;
+}
+.dashboard-hero,
+.profile-hero {
+  min-height: 300px;
+}
+.profile-hero {
+  background:
+    linear-gradient(90deg, #100b10 25%, #100b10bb 58%, transparent),
+    url('../images/background.png') left 10% / cover;
+}
+.hero .eyebrow {
+  color: #ff6575;
+}
+@media (max-width: 1250px) {
+  .brand {
+    min-width: 190px;
+  }
+  .brand-logo {
+    width: 190px;
+    height: 60px;
+  }
+}
+@media (max-width: 700px) {
+  .brand {
+    min-width: 0;
+  }
+  .brand-logo {
+    width: 190px;
+    height: 48px;
+  }
+  .hero > div:first-child {
+    max-width: 100%;
+  }
+  .hero {
+    background-position:
+      center,
+      25% top;
+  }
+  .ambient-background {
+    background-position: 35% top;
   }
 }

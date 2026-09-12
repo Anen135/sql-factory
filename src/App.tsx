@@ -53,15 +53,6 @@ export default function App() {
               Страница не найдена. <a href="#/dashboard">На главную</a>
             </p>
           )}
-          <footer className="art-credit">
-            Иллюстрация:{' '}
-            <a href="https://commons.wikimedia.org/wiki/File:Wikipe-tan_full_length.png">
-              Wikipe-tan · Kasuga
-            </a>
-            {' · '}
-            <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> · Тонирование
-            и кадрирование CSS
-          </footer>
         </main>
       </div>
     </>

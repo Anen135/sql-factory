@@ -129,4 +129,5 @@ npx playwright test --config playwright.production.config.ts # после npm ru
 
 Слои данных и выполнения отделены от UI: можно добавить несколько датасетов на задачу, worker pool, AST-проверку обязательных конструкций, визуализацию вложенных подзапросов и импорт/экспорт прогресса. Приложение остаётся полностью статическим.
 
-Иллюстрация: [Wikipe-tan, Kasuga](https://commons.wikimedia.org/wiki/File:Wikipe-tan_full_length.png), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Исходный прозрачный PNG хранится в src/assets; тонирование и кадрирование выполнены CSS. Оформленная версия иллюстрации доступна на той же лицензии.
+
+Оформление использует предоставленные материалы из images: background.png, logo.png, icon.png; style-sheet.png и maskot.png служат дизайн-референсами.

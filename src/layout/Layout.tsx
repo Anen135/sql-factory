@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from 'react';
 import { ChevronRight, Code2, Search, Check, ChevronDown, GraduationCap } from 'lucide-react';
 import { tasks, categories } from '../data/tasks';
 import { useStore } from '../store/useStore';
+
+// Высота шапки в px. Должна совпадать с `height: 86px` у header в styles.css.
+const HEADER_H = 86;
 export function Header({
   page,
   search,
@@ -78,6 +81,7 @@ export function Sidebar({ current, search }: { current: number; search: string }
   const solved = useStore((s) => s.solved);
   const [closed, setClosed] = useState<string[]>([]);
   const treeRef = useRef<HTMLDivElement>(null);
+  const asideRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const tree = treeRef.current;
     const active = tree?.querySelector<HTMLElement>('.current');
@@ -85,8 +89,24 @@ export function Sidebar({ current, search }: { current: number; search: string }
       tree.scrollTop += active.getBoundingClientRect().top - tree.getBoundingClientRect().top - 100;
     }
   }, [current]);
+  useEffect(() => {
+    // Пока шапка прячется при прокрутке вниз, пересчитываем высоту сайдбара так,
+    // чтобы он всегда доставал до низа экрана. --scrolled — сколько пикселей
+    // шапки уже скрылось (0..HEADER_H), его считывает .sidebar в styles.css.
+    const aside = asideRef.current;
+    const update = () => {
+      if (!aside) return;
+      const v = `${Math.min(window.scrollY, HEADER_H)}px`;
+      if (aside.style.getPropertyValue('--scrolled') !== v) {
+        aside.style.setProperty('--scrolled', v);
+      }
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, []);
   return (
-    <aside className="sidebar">
+    <aside className="sidebar" ref={asideRef}>
       <div className="sidebar-title">
         <h3>
           <Code2 size={18} /> Задачи

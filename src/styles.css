@@ -232,7 +232,8 @@ nav a.active {
   background: #100c10dd;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 86px);
+  /* --scrolled (0..86px) задаёт Sidebar в Layout.tsx при прокрутке: сколько шапки уже скрылось. */
+  height: calc(100vh - 86px + var(--scrolled, 0px));
   position: sticky;
   top: 0;
 }

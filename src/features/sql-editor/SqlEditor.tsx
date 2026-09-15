@@ -1,8 +1,10 @@
 import Editor, { loader } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import 'monaco-editor/esm/vs/basic-languages/sql/sql.contribution';
+import 'monaco-editor/esm/vs/editor/contrib/suggest/browser/suggestController';
 import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { createSqlCompletionProvider } from './completions';
 (self as any).MonacoEnvironment = { getWorker: () => new EditorWorker() };
 loader.config({ monaco });
 export function SqlEditor({
@@ -16,6 +18,13 @@ export function SqlEditor({
 }) {
   const runRef = useRef(onRun);
   runRef.current = onRun;
+  useEffect(() => {
+    const provider = monaco.languages.registerCompletionItemProvider(
+      'sql',
+      createSqlCompletionProvider(monaco.languages.CompletionItemKind),
+    );
+    return () => provider.dispose();
+  }, []);
   return (
     <Editor
       height="285px"
@@ -63,6 +72,10 @@ export function SqlEditor({
         automaticLayout: true,
         wordWrap: 'on',
         tabSize: 4,
+        quickSuggestions: { other: true, comments: false, strings: false },
+        suggestOnTriggerCharacters: true,
+        wordBasedSuggestions: 'off',
+        tabCompletion: 'on',
         renderLineHighlight: 'line',
         overviewRulerLanes: 0,
         hideCursorInOverviewRuler: true,
